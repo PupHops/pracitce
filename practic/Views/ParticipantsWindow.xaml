@@ -1,0 +1,46 @@
+﻿<Window x:Class="practic.Views.ParticipantsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:practic.Views"
+        mc:Ignorable="d"
+        Title="ParticipantsWindow" Height="450" Width="800"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        Icon="/practic;component/Other/logo.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button x:Name="NewUser" HorizontalAlignment="Center" Click="NewUser_Click" Content="Добавить участника"/>
+
+        <ListBox Grid.Row="1" x:Name="Users" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border x:Name="ItemBorder" BorderThickness="2" BorderBrush="Black" CornerRadius="10" Margin="0 10">
+                        <Grid Background="Transparent" Width="1400px">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image MaxWidth="300" Margin="10" Source="{Binding Path=Source}"/>
+                            <StackPanel Margin="0 50"  Grid.Column="1">
+                                <StackPanel  Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Path=Surname}"/>
+                                        <TextBlock Text="{Binding Path=Name, StringFormat={} {0} }"/>
+                                        <TextBlock Text="{Binding Path=Patronimic, StringFormat={} {0}}"/>
+                                    </StackPanel>
+                                    <TextBlock Text="{Binding Path=Email}"/>
+                                    <TextBlock Text="{Binding Path=Country.Name}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

@@ -1,0 +1,38 @@
+﻿<Window x:Class="practic.Authorization"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:practic"
+        xmlns:easy="clr-namespace:EasyCaptcha.Wpf;assembly=EasyCaptcha.Wpf"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Authorization" Height="450" Width="800"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        ResizeMode="NoResize"
+        Icon="/practic;component/Other/logo.png"
+        WindowStyle="ToolWindow">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="IdText" Grid.Column="1" VerticalAlignment="Center" FontSize="20" md:HintAssist.Hint="Id" Style="{StaticResource MaterialDesignOutlinedTextBox}" MaxLength="15"/>
+        <PasswordBox x:Name="PasswordText" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" FontSize="20" Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}" md:HintAssist.Hint="Пароль" md:PasswordBoxAssist.PasswordMaskedIcon="Eye" md:PasswordBoxAssist.PasswordRevealedIcon="EyeShut" MaxLength="15"/>
+
+        <easy:Captcha x:Name="Captcha" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="CaptchaAnswer" Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom" FontSize="20" Style="{DynamicResource MaterialDesignOutlinedTextBox}" md:HintAssist.Hint="Текст с капчи" MaxLength="4"/>
+        <Button x:Name="RefreshCaptcha" Click="RefreshCaptcha_Click" Grid.Row="2" Content="Обновить" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"/>
+
+        <Button x:Name="LogInButton" Click="LogInButton_Click" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Войти"/>
+    </Grid>
+</Window>
