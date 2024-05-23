@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:practic.Views"
         mc:Ignorable="d"
-        Title="ParticipantsWindow" Height="450" Width="800"
+        Height="450" Width="800"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
-        Icon="/practic;component/Other/logo.png">
+        Icon="/practic;component/Other/logo.png"
+        Title="Все участники">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>

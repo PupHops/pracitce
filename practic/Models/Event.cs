@@ -10,12 +10,14 @@ namespace practic.Models
 {
     public class Event
     {
+        public static List<Event> ItemsSource { get; internal set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public int Days { get; set; }
         public City City { get; set; }
         public User? Winner { get; set; }
+        public List<ActivityEvent> ActivityEvents { get; set; }
 
         public string Source => GetSource();
         public string CityName => City.Name+" ";

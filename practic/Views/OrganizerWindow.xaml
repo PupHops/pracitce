@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:practic.Views"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="OrganizerWindow" Height="450" Width="800"
+        Title="Окно организатора" Height="450" Width="800"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         Icon="/practic;component/Other/logo.png">
@@ -23,11 +23,12 @@
         </Grid.RowDefinitions>
         <TextBlock x:Name="HelloText" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
         <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
-            <Button x:Name="EventsButton" Content="Мероприятия" Margin="10"/>
-            <Button x:Name="NewUserButton" Content="Добавление жюрми/модератора" Margin="10" Click="NewUserButton_Click"/>
+            <Button x:Name="EventsButton" Content="Мероприятия" Click="EventsButton_Click" Margin="10"/>
+            <Button x:Name="NewUserButton" Content="Добавление жюри/модератора" Margin="10" Click="NewUserButton_Click"/>
             <Button x:Name="PartsButton" Content="Участники" Margin="10" Click="PartsButton_Click"/>
         </StackPanel>
         <Image x:Name="Pfp" Grid.Row="1"/>
         <Button x:Name="ProfileButton" Grid.Row="2" Content="Профиль" Click="ProfileButton_Click"/>
+        <Button x:Name="LogOutButton"  Grid.Row="2" Click="LogOutButton_Click" Grid.Column="1" Margin="40 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Выход"/>
     </Grid>
 </Window>

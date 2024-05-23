@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:practic.Views"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="NewUser" Height="750" Width="800" MinWidth="550" MinHeight="750"
+        Title="Добавление нового пользователя" Height="750" Width="800" MinWidth="550" MinHeight="750"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         Icon="/practic;component/Other/logo.png"
@@ -31,7 +31,9 @@
         </StackPanel>
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
             <Image x:Name="Pfp" Source="/practic;component/Other/pfp.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-            <DatePicker x:Name="Birthday" Style="{StaticResource MaterialDesignOutlinedDatePicker}" md:HintAssist.Hint="Дата рождения" Margin="0 10" Padding="10" FontSize="15"/>
+            <DatePicker x:Name="Birthday" Style="{StaticResource MaterialDesignOutlinedDatePicker}" 
+            md:HintAssist.Hint="Дата рождения" Margin="0 10" Padding="10" FontSize="15"
+            CalendarOpened="DatePicker_CalendarOpened" SelectedDateChanged="Birthday_SelectedDateChanged" />
             <ComboBox x:Name="Country" Style="{StaticResource MaterialDesignOutlinedComboBox}" md:HintAssist.Hint="Страна" Margin="0 10" Padding="10" FontSize="15"/>
             <PasswordBox x:Name="Password" Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}" md:HintAssist.Hint="Пароль" Margin="0 10" Padding="10" FontSize="15"/>
             <PasswordBox x:Name="PasswordCheck" Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}" md:HintAssist.Hint="Повтор пароля" Margin="0 10" Padding="10" FontSize="15"/>

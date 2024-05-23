@@ -15,73 +15,83 @@ using System.Windows;
 
 namespace practic.ViewModels
 {
-	public class MainWindowViewModel: INotifyPropertyChanged
-	{
-		private Event selectedEvent;
+    public class MainWindowViewModel : INotifyPropertyChanged
+    {
+        private Event selectedEvent;
+        private IEnumerable<Event> allEvents;
+        private List<string> sortOptions = new List<string> { "Нет сортировки", "По возрастанию даты", "По убыванию даты" };
+        private string selectedSortOption = "Нет сортировки";
 
-		public IEnumerable<Event> allEvents { get; set; }
-		public  List<string> Days { get; set; }
-		private string selectedDay;
+        public IEnumerable<Event> AllEvents
+        {
+            get { return allEvents; }
+            set
+            {
+                allEvents = value;
+                OnPropertyChanged(nameof(Events));
+            }
+        }
 
-		public string SelectedDay
-		{
-			get { return selectedDay; }
-			set
-			{
-				selectedDay = value;
-				OnPropertyChanged(nameof(SelectedDay));
-				OnPropertyChanged(nameof(Events));
-			}
-		}
-		public IEnumerable<Event> Events
-		{
-			get
-			{
-				if (SelectedDay == "Все")
-				{
-					return allEvents;
-				}
-				else
-				{
-					return allEvents.Where(e=>e.Days == Convert.ToInt32(SelectedDay));
-				}
-			}
-			set
-			{
-				allEvents = value;
-				OnPropertyChanged(nameof(Events));
-			}
-		}
+        public List<string> SortOptions
+        {
+            get { return sortOptions; }
+            set
+            {
+                sortOptions = value;
+                OnPropertyChanged(nameof(SortOptions));
+            }
+        }
 
-		public Event SelectedEvent
-		{
-			get { return selectedEvent; }
-			set
-			{
-				selectedEvent = value;
-				OnPropertyChanged("SelectedEvent");
-			}
-		}
+        public string SelectedSortOption
+        {
+            get { return selectedSortOption; }
+            set
+            {
+                selectedSortOption = value;
+                OnPropertyChanged(nameof(SelectedSortOption));
+                OnPropertyChanged(nameof(Events));
+            }
+        }
 
-		public MainWindowViewModel()
-		{
-			Context db = new Context();
-			Days = new List<string>();
-			Days.Add("Все");
-			Days.AddRange((from e in db.Events
-					group e by e.Days
-					into d
-					select d.Key.ToString()).ToList());
-			SelectedDay = "Все";
-			allEvents = db.Events.Include(e=>e.City).Include(e=>e.Winner).ToList();
+        public IEnumerable<Event> Events
+        {
+            get
+            {
+                IEnumerable<Event> eventsToShow = AllEvents;
 
-		}
+                if (SelectedSortOption == "По возрастанию даты")
+                {
+                    eventsToShow = eventsToShow.OrderBy(e => e.Date);
+                }
+                else if (SelectedSortOption == "По убыванию даты")
+                {
+                    eventsToShow = eventsToShow.OrderByDescending(e => e.Date);
+                }
 
-		public event PropertyChangedEventHandler PropertyChanged;
-		public void OnPropertyChanged([CallerMemberName] string prop = "")
-		{
-			if (PropertyChanged != null)
-				PropertyChanged(this, new PropertyChangedEventArgs(prop));
-		}
-	}
+                return eventsToShow;
+            }
+        }
+
+        public Event SelectedEvent
+        {
+            get { return selectedEvent; }
+            set
+            {
+                selectedEvent = value;
+                OnPropertyChanged(nameof(SelectedEvent));
+            }
+        }
+
+        public MainWindowViewModel()
+        {
+            Context db = new Context();
+            AllEvents = db.Events.Include(e => e.City).Include(e => e.Winner).Include(e => e.ActivityEvents).ToList();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
+    }
 }

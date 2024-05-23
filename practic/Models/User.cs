@@ -22,6 +22,7 @@ namespace practic.Models
         public char Gender { get; set; }
         public DateTime Birthday { get; set; }
         public Role Role { get; set; }
+        
 
 		public string Source => Photo != null? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images", "Users", Photo):"";
 	}

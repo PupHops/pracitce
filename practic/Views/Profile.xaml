@@ -6,18 +6,19 @@
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:practic.Views"
         mc:Ignorable="d"
-        Title="Profile" Height="450" Width="800"
+        Title="Профиль" Height="550" Width="600"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         Icon="/practic;component/Other/logo.png" WindowStyle="ToolWindow">
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBox x:Name="Id" Style="{StaticResource MaterialDesignOutlinedTextBox}" md:HintAssist.Hint="Id" IsEnabled="False" Margin="0 10"/>
-            <TextBox x:Name="Name" Style="{StaticResource MaterialDesignOutlinedTextBox}" md:HintAssist.Hint="Имя" IsEnabled="False" Margin="0 10"/>
-            <TextBox x:Name="Surname" Style="{StaticResource MaterialDesignOutlinedTextBox}" md:HintAssist.Hint="Фамилия" IsEnabled="False" Margin="0 10"/>
-            <TextBox x:Name="Patronimic" Style="{StaticResource MaterialDesignOutlinedTextBox}" md:HintAssist.Hint="Отчество" IsEnabled="False" Margin="0 10"/>
-            <TextBox x:Name="Email" Style="{StaticResource MaterialDesignOutlinedTextBox}" md:HintAssist.Hint="Email" IsEnabled="False" Margin="0 10"/>
-            <TextBox x:Name="Phone" Style="{StaticResource MaterialDesignOutlinedTextBox}" md:HintAssist.Hint="Телефон" IsEnabled="False" Margin="0 10"/>
+            <TextBox x:Name="Name" Style="{StaticResource MaterialDesignOutlinedTextBox}" md:HintAssist.Hint="Имя" IsEnabled="True" Margin="0 10"/>
+            <TextBox x:Name="Surname" Style="{StaticResource MaterialDesignOutlinedTextBox}" md:HintAssist.Hint="Фамилия" IsEnabled="True" Margin="0 10"/>
+            <TextBox x:Name="Patronimic" Style="{StaticResource MaterialDesignOutlinedTextBox}" md:HintAssist.Hint="Отчество" IsEnabled="True" Margin="0 10"/>
+            <TextBox x:Name="Email" Style="{StaticResource MaterialDesignOutlinedTextBox}" md:HintAssist.Hint="Email" IsEnabled="True" Margin="0 10"/>
+            <TextBox x:Name="Phone" Style="{StaticResource MaterialDesignOutlinedTextBox}" md:HintAssist.Hint="Телефон" IsEnabled="True" Margin="0 10"/>
+            <Button x:Name="OkButton" Content="Ok" Margin="10 0" Click="OkButton_Click"/>
         </StackPanel>
     </Grid>
 </Window>

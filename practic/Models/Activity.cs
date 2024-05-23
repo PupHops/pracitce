@@ -12,7 +12,6 @@ namespace practic.Models
         public string Name { get; set; }
         public TimeSpan StartTime { get; set; }
         public User Moderator { get; set; }
-
         public override string ToString()
         {
             return $"{Name}";

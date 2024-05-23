@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:practic"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="900"
+        Title="Главное окно" Height="450" Width="900"
         MinHeight="400" MinWidth="900"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"

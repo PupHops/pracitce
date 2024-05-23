@@ -11,5 +11,10 @@ namespace practic.Models
         public int Id { get; set; }
         public Activity? Activity { get; set; }
         public Event? Event { get; set; }
-    }
+
+		public override string ToString()
+		{
+			return $"{Activity.Name}";
+		}
+	}
 }

@@ -75,21 +75,25 @@ namespace practic
 			if (String.IsNullOrEmpty(PasswordText.Password) || String.IsNullOrEmpty(IdText.Text)
 				|| String.IsNullOrEmpty(CaptchaAnswer.Text) || !int.TryParse(IdText.Text, out int x))
 			{
-				return;
+                CreateCaptcha();
+                MessageBox.Show("Не все поля заполнены");
+                return;
 			}
 			if (!db.Users.Any(u=>u.Id == Convert.ToInt32(IdText.Text) && u.Password == PasswordText.Password))
 			{
 				MessageBox.Show("Пользователя с такими данными не существует");
 				_counter++;
 				CheckCounter();
-				return;
+                CreateCaptcha();
+                return;
 			}
 			if (CaptchaAnswer.Text != _answer)
 			{
 				MessageBox.Show("Неверно введена капча");
 				_counter++;
 				CheckCounter();
-				return;
+                CreateCaptcha();
+                return;
 			}
 			User user = db.Users.Include(u=>u.Role).Where(u => u.Id == Convert.ToInt32(IdText.Text) && u.Password == PasswordText.Password).FirstOrDefault();
 			UserWindow win = new UserWindow(user);
@@ -97,9 +101,10 @@ namespace practic
 			switch (user.Role.Id)
 			{
 				case 1:
-					win.Show();
-					break;
-				case 2:
+                    UserWindow usrwin = new UserWindow(user);
+                    usrwin.Show();
+                    break;
+                case 2:
 					win.Show();
 					break;
 				case 3:
@@ -107,9 +112,9 @@ namespace practic
 					OrgWin.Show();
 					break;
 				case 4:
-					win.Show();
-					break;
-			}
+                    win.Show();
+                    break;
+            }
 			this.DialogResult = true;
 			this.Close();
 		}

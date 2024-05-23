@@ -68,5 +68,17 @@ namespace practic.Views
             ParticipantsWindow window = new ParticipantsWindow();
             window.ShowDialog();
         }
+
+		private void EventsButton_Click(object sender, RoutedEventArgs e)
+		{
+            EventsWindow window = new EventsWindow();
+            window.ShowDialog();
+        }
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow win = new MainWindow();
+            win.Show();
+            this.Hide();
+        }
     }
 }
