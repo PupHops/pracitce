@@ -12,12 +12,11 @@ namespace practic
 {
 	public class Context: DbContext
 	{
+        //Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=helloappdb;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer
 		//public readonly string connectionString = "Initial Catalog=bibaNew;Server=192.168.221.12;user=user04;password=04;TrustServerCertificate=true";
-
-		//private readonly string connectionString = "Data Source=DESKTOP-HIITB3O; initial Catalog=biba; " +
-		//"Integrated Security=True;TrustServerCertificate=True";
-		private readonly string connectionString = "Data Source=DESKTOP-SD2NSU5\\MSSQLSERVER05; initial Catalog=zalupa; " +
-"Integrated Security=True;TrustServerCertificate=True";
+        //private readonly string connectionString = "Data Source=DESKTOP-HIITB3O; initial Catalog=biba; " +
+        //"Integrated Security=True;TrustServerCertificate=True";
+        private readonly string connectionString = "Data Source=Dany; initial Catalog=zalupa; Integrated Security=True;TrustServerCertificate=True";
 		public DbSet<Activity> Activities { get; set; }
 		public DbSet<Event> Events { get; set; }
 		public DbSet<ActivityEvent> ActivityEvents { get; set; }
@@ -36,8 +35,8 @@ namespace practic
 
 		public Context()
 		{
-			//Database.EnsureDeleted();
-			//Database.EnsureCreated();
+			Database.EnsureDeleted();
+			Database.EnsureCreated();
 		}
 	}
 }
